@@ -1,9 +1,4 @@
 import io 
-import boto3 # type: ignore
-from boto3_type_annotations.s3 import ServiceResource # type: ignore
-from typing import Union, Tuple, Optional
-import zipfile
-
 
 class FileLikeObject(io.RawIOBase):
 
@@ -17,40 +12,18 @@ class FileLikeObject(io.RawIOBase):
 
     """
 
-    def __init__(self, bucket_name: str, object_key: str, aws_credentials: Optional[Tuple[(str, str)]] = None) -> None:
+    def __init__(self,s3object) -> None:
 
-        """
-        Parameters:
-        -----------
-        bucket_name: string
-            Name of S3 Bucket.
-
-        object_key: string
-
-            Name of Object inside of S3 Bucket, including path.
-            if object is on path s3://bucket_name/folder1/folder2/file
-            object_key would be folder1/folder2/file
-
-        aws_credentials: Optional
-            Your aws access key id at index 0 and aws secret access key at index 1 
-
-        """
-        if aws_credentials is not None:
-
-            aws_access_key_id = aws_credentials[0]
-            aws_secret_access_key = aws_credentials[1]
-            s3_resource: ServiceResource = boto3.resource('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
-        else:
-            s3_resource: ServiceResource = boto3.resource('s3')
-        self.bucket: ServiceResource = s3_resource.Bucket(bucket_name)
-        self.s3_object = self.bucket.Object(object_key)
+ 
+        
+        self.s3object = s3object
         self.position: int = 0
 
 
     @property
     def size(self) -> int:
         "Returns file size in bytes"
-        return self.s3_object.content_length
+        return self.s3object.content_length
 
     def seek(self, offset: int, whence: int = io.SEEK_SET) -> int:
         """
@@ -108,7 +81,7 @@ class FileLikeObject(io.RawIOBase):
             range_header = "bytes=%d-%d" % (self.position, new_position - 1)
             self.seek(offset=size, whence=io.SEEK_CUR)
 
-        return self.s3_object.get(Range=range_header)["Body"].read()
+        return self.s3object.get(Range=range_header)["Body"].read()
 
     def readable(self) -> bool:
         return True    
