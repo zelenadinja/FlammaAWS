@@ -9,16 +9,11 @@ class FileLikeObject(io.RawIOBase):
     Gold mine:https://docs.python.org/3/library/io.html.
     https://docs.python.org/3/library/io.html?highlight=io#raw-i-o
 
-
     """
-
     def __init__(self,s3object) -> None:
-
- 
-        
+       
         self.s3object = s3object
         self.position: int = 0
-
 
     @property
     def size(self) -> int:
@@ -63,9 +58,7 @@ class FileLikeObject(io.RawIOBase):
         Fewer than size bytes may be returned if the operating system call returns fewer than size bytes.
         If 0 bytes are returned, and size was not 0, this indicates end of file.
         If the object is in non-blocking mode and no bytes are available, None is returned.
-
         """
-
         if size == -1:
             # Read to the end of the file
             range_header = "bytes=%d-" % self.position
