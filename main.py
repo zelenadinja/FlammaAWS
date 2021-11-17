@@ -1,4 +1,3 @@
-from s3_wrapper import FileLikeObject
 import boto3   #type: ignore
 from typing import Optional,Tuple, List, Union, Dict 
 from boto3_type_annotations.s3 import ServiceResource #type: ignore 
@@ -6,7 +5,7 @@ import zipfile
 import io 
 from tqdm import tqdm #type: ignore
 import argparse
-
+from s3_wrapper import FileLikeObject
 
 
 def str2bool(v):
@@ -44,7 +43,7 @@ def _setup_parser():
 
 
 
-class FlammaAWS:
+class flammaAWS:
     """
     ZIP file should be first uploaded to S3 Bucket.Idea is to  use s3 wrapper for streaming objects if file cant fit into memory.
     Thats why there is a threshold argument.Just test it out since its  a waste of time if we stream file that can fit into memory at once.
@@ -197,9 +196,12 @@ class FlammaAWS:
                         Key = filename,
                     )
 
+
 if __name__ == '__main__':
 
     args = _setup_parser()
 
-    flamma = FlammaAWS(bucket_name=args.bucket_name, object_key=noneargument(args.object_key), aws_credentials=noneargument(args.aws_creds))
+    flamma = flammaAWS(bucket_name=args.bucket_name, object_key=noneargument(args.object_key), aws_credentials=noneargument(args.aws_creds))
     flamma.unzip_upload(threshold=args.threshold, verbose=args.verbose, delete=args.delete)
+
+

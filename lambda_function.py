@@ -1,10 +1,11 @@
 import urllib.parse
 import boto3
-from s3_wrapper import FileLikeObject 
+from s3_wrapper import FileLikeObject
 import zipfile 
 import tqdm
 import io 
 from boto3_type_annotations.s3 import ServiceResource
+
 s3:ServiceResource = boto3.resource('s3')
 
 def lambda_handler(event, context):
