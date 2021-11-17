@@ -1,3 +1,19 @@
+Table of Contents
+=================
+
+* [Why need for this?](#why-need-for-this)
+   * [FileLikeObject](#filelikeobject)
+   * [Usage](#usage)
+      * [From Terminal](#from-terminal)
+      * [Notebooks and Scripts](#notebooks-and-scripts)
+   * [Lambda Function](#lambda-function)
+   * [Lambda Function](#lambda-function-1)
+
+
+
+
+
+
 # Why need for this?
   First of all, [S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) is all static, once u upload a file u cant commit any changes on S3.
   If u want to unzip a file from S3 most of the time u do something like this:
