@@ -544,4 +544,3 @@ flamma.unzip_upload(verbose=True, delete=True)
 
 Best use case for this is to use as lambda function.Upload lambda_dep.zip  and copy content of lambda_function.py to your lambda function.
 Make PUT and Multipart upload completed on.Allow Lambda to access S3 and cloudwatch logs.
->>>>>>> 98a7560bb9d5d87065faa0e22f14e6292fe0b445
