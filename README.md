@@ -7,7 +7,6 @@ Table of Contents
       * [From Terminal](#from-terminal)
       * [Notebooks and Scripts](#notebooks-and-scripts)
    * [Lambda Function](#lambda-function)
-   * [Lambda Function](#lambda-function-1)
 
 
 
