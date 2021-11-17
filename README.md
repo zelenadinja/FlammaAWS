@@ -542,5 +542,11 @@ flamma.unzip_upload(verbose=True, delete=True)
   
 ## Lambda Function
 
-Best use case for this is to use as lambda function.Upload lambda_dep.zip  and copy content of lambda_function.py to your lambda function.
-Make PUT and Multipart upload completed on.Allow Lambda to access S3 and cloudwatch logs.
+Best use case for this is to [trigger](https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html) a [lambda function](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) that is going to unzip a file when its uplaoded on S3 Bucket.
+
+Upload lambda_func_dep.zip to Lambda Function.
+
+Make PUT and Multipart upload notification on S3 Event notification for Lambda function.
+
+Allow Lambda to access S3 and cloudwatch for logs.
+
