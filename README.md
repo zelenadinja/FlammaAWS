@@ -283,6 +283,6 @@ Allow Lambda to access S3 and cloudwatch for logs.
 
 ## Conclusion
 Dont use this if u dont need to, its very slow.Test out threshold parameter to check if u can fit whole file into memory.I dont even use this for huge files.
-I spin strong EC2 instance.This is free solution.Lambda function limitation is 15 minutes constraint,but they are powerfull enough to upload large files.
+I used strong EC2 instance.This is free solution.Lambda function limitation is 15 minutes constraint,but they are powerfull enough to upload large files.
 
 
